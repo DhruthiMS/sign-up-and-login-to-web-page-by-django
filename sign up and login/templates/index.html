@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>index</title>
+   
+    
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-image:url("static/image/background.jpg")
+
+      }
+    </style>
+  </head>  
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="">QZZO Technologies Private Limited</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+   
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+    </ul>
+
+
+     <button type="button" class="btn btn-danger mx-1" data-target="#loginModel" data-toggle="modal" > Login</button>
+
+    <button type="button" class="btn btn-primary mx-1" data-target="#signupModel" data-toggle="modal" > Signup </button>
+  
+    
+  </div>
+</nav>
+
+{% for message in messages %}
+
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<div class="container mt-4">
+
+
+
+
+</div>
+
+
+
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModel" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Signup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <form action="/signup" method="post">{% csrf_token %}
+
+
+            
+     <div class="form-group">
+      <label for="fname">First Name </label>
+      <input type="text" class="form-control" name="fname" id="fname" placeholder="Enter Your First Name" required>
+      </div>
+
+
+      <div class="form-group">
+      <label for="lname">Last Name </label>
+      <input type="text" class="form-control" name="lname" id="lname" placeholder="enter you last name" required>
+      </div>
+
+    
+
+     <div class="form-group">
+        <label for="age">Age </label>
+        <input type="number" class="form-control" name="age" id="age" placeholder="enter your age" required>
+      </div>
+
+      <div class="form-group">
+        <label for="uid">"Unique_id</label>
+        <input type="text" class="form-control0" name="uid" id="uid" placeholder="enter the unique id" >
+      </div>
+  
+      
+      <div class="form-group">
+      <label for="email">Email Address </label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="enter your email" required>
+      </div>
+
+
+      
+      <div class="form-group">
+      <label for="pass1">Password </label>
+      <input type="text" class="form-control" name="pass1" id="pass1" placeholder="enter you Password " required>
+      </div>
+
+
+      <div class="form-group">
+      <label for="pass2">Confirm Password </label>
+      <input type="password" class="form-control" name="pass2" id="pass2" placeholder="enter you last name" required>
+      </div>
+
+
+
+
+
+
+        <button type="submit" class="btn btn-success">SignUp </button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% comment %} login model  {% endcomment %}
+
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="loginModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModelLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+       <form action="/login" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="loginemail">Email_id</label>
+    <input type="email" class="form-control" name="loginemail" id="loginemail" placeholder="Enter yoyr email" required>
+  </div>
+ 
+    <div class="form-group">
+    <label for="loginpassword">Password</label>
+    <input type="password" class="form-control" name="loginpassword" id="loginpassword"  placeholder="Enter Your Password" required>
+  </div>
+  
+  <a href="/details">
+   <button type="submit" class="btn btn-success">Login</button>
+  </a>
+</form>
+      </div>
+      <div class="modal-footer">
+        
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
